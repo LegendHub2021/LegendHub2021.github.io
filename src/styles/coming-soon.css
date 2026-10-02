@@ -1,0 +1,190 @@
+:root {
+  color-scheme: dark;
+  --text: #f3f1ed;
+  --muted: #a4a19b;
+  --red-bright: #d6282c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: #050505;
+  color: var(--text);
+  font-family: Inter, Arial, sans-serif;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+.coming-soon-body {
+  overflow-x: hidden;
+  background: #050505;
+}
+
+.coming-soon {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: clamp(2rem, 6vw, 5rem);
+  text-align: center;
+  overflow: hidden;
+}
+
+.coming-soon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background:
+    radial-gradient(circle at 50% 34%, rgba(119, 15, 18, 0.28), transparent 26rem),
+    linear-gradient(180deg, #0b0909 0%, #050505 72%);
+}
+
+.coming-soon__atmosphere {
+  position: absolute;
+  inset: -15%;
+  z-index: -2;
+  opacity: 0.42;
+  background:
+    radial-gradient(ellipse at 22% 58%, rgba(110, 110, 110, 0.12), transparent 32%),
+    radial-gradient(ellipse at 78% 42%, rgba(130, 18, 20, 0.14), transparent 30%);
+  filter: blur(40px);
+}
+
+.coming-soon__content {
+  width: min(100%, 42rem);
+  display: grid;
+  justify-items: center;
+}
+
+.coming-soon__portrait-glitch {
+  position: relative;
+  width: clamp(10rem, 26vw, 15rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: drop-shadow(0 2rem 5rem rgba(0, 0, 0, 0.75));
+  animation: legend-glitch-jolt 3.4s steps(1, end) infinite;
+}
+
+.coming-soon__portrait-glitch::before,
+.coming-soon__portrait-glitch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 50%;
+  background: url("/assets/legend-profile.png") center / cover no-repeat;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.coming-soon__portrait-glitch::before {
+  mix-blend-mode: screen;
+  filter: saturate(1.8) hue-rotate(-18deg);
+  animation: legend-glitch-red 3.4s steps(1, end) infinite;
+}
+
+.coming-soon__portrait-glitch::after {
+  filter: grayscale(1) contrast(1.4);
+  animation: legend-glitch-white 3.4s steps(1, end) infinite;
+}
+
+.coming-soon__portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(214, 40, 44, 0.5);
+  box-shadow:
+    0 0 0 0.55rem rgba(255, 255, 255, 0.025),
+    0 2rem 5rem rgba(0, 0, 0, 0.75),
+    0 0 5rem rgba(159, 23, 25, 0.18);
+}
+
+@keyframes legend-glitch-red {
+  0%, 72%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); }
+  74% { opacity: 0.75; transform: translate(-11px, 1px); clip-path: inset(11% 0 58% 0); }
+  77% { opacity: 0.6; transform: translate(9px, -2px); clip-path: inset(61% 0 14% 0); }
+  80% { opacity: 0; transform: translate(0); }
+  87% { opacity: 0.65; transform: translate(-7px, 0); clip-path: inset(38% 0 35% 0); }
+  90% { opacity: 0; transform: translate(0); }
+}
+
+@keyframes legend-glitch-white {
+  0%, 73%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); }
+  75% { opacity: 0.46; transform: translate(8px, -1px); clip-path: inset(28% 0 47% 0); }
+  78% { opacity: 0.35; transform: translate(-8px, 2px); clip-path: inset(70% 0 7% 0); }
+  81%, 86% { opacity: 0; transform: translate(0); }
+  88% { opacity: 0.4; transform: translate(6px, 0); clip-path: inset(7% 0 70% 0); }
+  91% { opacity: 0; transform: translate(0); }
+}
+
+@keyframes legend-glitch-jolt {
+  0%, 72%, 81%, 86%, 91%, 100% { transform: translate(0) skewX(0); }
+  74% { transform: translate(2px, -1px) skewX(-0.7deg); }
+  77% { transform: translate(-2px, 1px) skewX(0.6deg); }
+  87% { transform: translate(1px) skewX(-0.35deg); }
+}
+
+.coming-soon__brand {
+  margin: 2rem 0 0.8rem;
+  color: var(--red-bright);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+}
+
+.coming-soon h1 {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: clamp(3.2rem, 11vw, 7.5rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.coming-soon__message {
+  margin: 1.5rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 480px) {
+  .coming-soon {
+    padding: 2rem 1.25rem;
+  }
+
+  .coming-soon__portrait {
+    width: 100%;
+  }
+
+  .coming-soon__portrait-glitch {
+    width: 10.5rem;
+  }
+
+  .coming-soon__message {
+    max-width: 20rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coming-soon__portrait-glitch::before,
+  .coming-soon__portrait-glitch::after {
+    animation: none;
+  }
+
+  .coming-soon__portrait-glitch {
+    animation: none;
+  }
+}

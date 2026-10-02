@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+.npm-cache/
+.xdg-config/
+local-preview/
+.env
+.DS_Store
