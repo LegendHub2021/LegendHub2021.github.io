@@ -138,6 +138,45 @@ body {
   letter-spacing: 0.04em;
 }
 
+.coming-soon__socials {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.65rem;
+}
+
+.coming-soon__socials a {
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  color: #aaa6a0;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.025);
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.coming-soon__socials a:hover,
+.coming-soon__socials a:focus-visible {
+  color: #fff;
+  border-color: rgba(214, 40, 44, 0.75);
+  background: rgba(214, 40, 44, 0.12);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.coming-soon__socials svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coming-soon__socials a {
+    transition: none;
+  }
+}
+
 @media (max-width: 480px) {
   .coming-soon {
     padding: 2rem 1.25rem;
